@@ -1,13 +1,16 @@
-// C++ program to find a triplet using Hashing
 #include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-// returns true if there is triplet with sum equal
-// to 'sum' present in A[]. Also, prints the triplet
-bool find3Numbers(int A[], int arr_size, int sum)
+/* Find triplet numbers that add up to 0*/
+int main()
 {
-	// Fix the first element as A[i]
-	for (int i = 0; i < arr_size - 2; i++)
+	int A[] = { -5,-2,0,2,3,5 };
+	int sum = 0;
+	int arr_size = sizeof(A) / sizeof(A[0]);
+    std::vector<std::array<int, 3>> output = std::vector<std::array<int, 3>>();
+
+    for (int i = 0; i < arr_size - 2; i++)
 	{
 
 		// Find pair in subarray A[i+1..n-1]
@@ -18,26 +21,15 @@ bool find3Numbers(int A[], int arr_size, int sum)
 		{
 			if (s.find(curr_sum - A[j]) != s.end())
 			{
-				printf("Triplet is %d, %d, %d", A[i],
-					A[j], curr_sum - A[j]);
-				return true;
+				output.push_back({A[i], curr_sum-A[j], A[j]});
 			}
 			s.insert(A[j]);
 		}
 	}
-
-	// If we reach here, then no triplet was found
-	return false;
-}
-
-/* Driver program to test above function */
-int main()
-{
-	int A[] = { 1, 4, 45, 6, 10, 8 };
-	int sum = 22;
-	int arr_size = sizeof(A) / sizeof(A[0]);
-
-	find3Numbers(A, arr_size, sum);
-
+    printf("Output:\n{");
+    for(array<int,3> i : output){
+        printf("[%d,%d,%d];",i[0],i[1],i[2]);
+    }
+    printf("}");
 	return 0;
 }
