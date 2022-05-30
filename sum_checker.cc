@@ -1,13 +1,20 @@
 #include <bits/stdc++.h>
+#include <iostream>
 #include <vector>
 using namespace std;
 
 /* Find triplet numbers that add up to 0*/
 int main()
 {
-	int A[] = { -5,-2,0,2,3,5 };
+	int arr_size;
+	cout<<"Enter the num of elements:";
+	cin>>arr_size;
+	int A[arr_size];
+	for(int i=0;i<arr_size;i++){
+		cout<<"Element no. "<<i+1<<": ";
+		cin>>A[i];
+	}
 	int sum = 0;
-	int arr_size = sizeof(A) / sizeof(A[0]);
     std::vector<std::array<int, 3>> output = std::vector<std::array<int, 3>>();
 
     for (int i = 0; i < arr_size - 2; i++)
